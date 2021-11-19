@@ -1,0 +1,33 @@
+<h1>Details</h1>
+<p>
+  <strong>List Name:</strong>
+  <%= @list.name %>
+</p>
+
+<hr>
+<%= render 'bookmarks/new', bookmark: @bookmark, list: @list %>
+
+<p><strong>Bookmarks:</strong></p>
+
+<% @list.bookmarks.each do |bookmark| %>
+  <div class="card-product">
+  <%= image_tag bookmark.movie.poster_url || "" %>
+    <div class="card-product-infos">
+      <h2><%= bookmark.movie.title %></h2>
+        <div class="card-sub-info">
+          <p><strong>Your comment: <%= bookmark.comment %></strong></p>
+          <p><strong>Rating: <%= bookmark.movie.rating %> / 10</strong></p>
+        </div>
+      <p><i><%= bookmark.movie.overview %></i></p>
+    </div>
+    <%= link_to bookmark_path(bookmark), method: :delete do %>
+    <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
+<% end %>
+
+<hr>
+
+<%= link_to lists_path do%>
+<i class="fas fa-arrow-circle-left"></i>
+<% end %>
