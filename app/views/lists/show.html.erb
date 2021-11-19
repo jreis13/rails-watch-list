@@ -20,6 +20,7 @@
         </div>
       <p><i><%= bookmark.movie.overview %></i></p>
     </div>
+      <div>
     <%= link_to bookmark_path(bookmark), method: :delete do %>
     <i class="fas fa-trash-alt"></i>
     <% end %>
